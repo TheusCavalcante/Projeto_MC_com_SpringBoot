@@ -2,6 +2,8 @@ package com.matcavalcanteteste.cursomc.domain;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.matcavalcanteteste.cursomc.domain.enums.EstadoPagamento;
 
 import jakarta.persistence.Entity;
@@ -10,8 +12,13 @@ import jakarta.persistence.Entity;
 public class PagamentoComBoleto extends Pagamento{
 	private static final long serialVersionUID = 1L;
 	
+	@JsonFormat(pattern="dd/MM/yyyy")
 	private Date DataVencimento;
+	
+	@JsonFormat(pattern="dd/MM/yyyy")
 	private Date DataPagamento;
+	
+	
 	public PagamentoComBoleto() {
 		super();
 	}
@@ -22,7 +29,8 @@ public class PagamentoComBoleto extends Pagamento{
 		this.DataVencimento = DataVencimento;
 		this.DataPagamento = DataPagamento;
 	}
-
+	
+	@JsonIgnore
 	public Date getDataVencimento() {
 		return DataVencimento;
 	}
@@ -30,7 +38,8 @@ public class PagamentoComBoleto extends Pagamento{
 	public void setDataVencimento(Date dataVencimento) {
 		DataVencimento = dataVencimento;
 	}
-
+	
+	@JsonIgnore
 	public Date getDataPagamento() {
 		return DataPagamento;
 	}
